@@ -150,8 +150,8 @@ def get_input_data(args, ds_factor=1):
     h1, w1 = src_img1.shape[:2]
     h2, w2 = src_img2.shape[:2]
 
-    src_disp1 = imageio.imread(os.path.join(input_dir, 'dpt_depth', os.path.basename(img_file1))) / 65535.
-    src_disp2 = imageio.imread(os.path.join(input_dir, 'dpt_depth', os.path.basename(img_file2))) / 65535.
+    src_disp1 = imageio.imread(os.path.join(input_dir, 'dpt_depth', os.path.basename(img_file1).replace("jpg", "png"))) / 65535.
+    src_disp2 = imageio.imread(os.path.join(input_dir, 'dpt_depth', os.path.basename(img_file2).replace("jpg", "png"))) / 65535.
 
     src_disp1 = remove_noise_in_dpt_disparity(src_disp1)
     src_disp2 = remove_noise_in_dpt_disparity(src_disp2)
