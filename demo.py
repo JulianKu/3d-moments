@@ -83,6 +83,16 @@ def homography_warp_pairs(args):
     disp1 = imageio.imread(disp_files[0])
     disp2 = imageio.imread(disp_files[1])
 
+    # resize
+    h_orig, w_orig, _ = img1.shape
+    img_ratio = max(h_orig, w_orig) / min(h_orig, w_orig)
+    resized = img_ratio * 720 / max(h_orig, w_orig)
+    size = (int(resized * w_orig), int(resized * h_orig))
+    img1 = cv2.resize(img1, size)
+    img2 = cv2.resize(img2, size)
+    disp1 = cv2.resize(disp1, size)
+    disp2 = cv2.resize(disp2, size)
+
     img_h = img1.shape[0]
     img_w = img1.shape[1]
     x = np.arange(img_h)
